@@ -1,4 +1,4 @@
-module github/silva4dev/ts-ms-wallet-project
+module github/silva4dev/golang-ms-wallet-project
 
 go 1.18
 
