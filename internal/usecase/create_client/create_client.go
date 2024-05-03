@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-type CreateClientDTO struct {
+type CreateClientInputDTO struct {
 	Name  string
 	Email string
 }
@@ -29,15 +29,17 @@ func NewCreateClientUseCase(clientGateway gateway.ClientGateway) *CreateClientUs
 	}
 }
 
-func (uc *CreateClientUseCase) Execute(input CreateClientDTO) (*CreateClientOutputDTO, error) {
+func (useCase *CreateClientUseCase) Execute(input *CreateClientInputDTO) (*CreateClientOutputDTO, error) {
 	client, err := entity.NewClient(input.Name, input.Email)
 	if err != nil {
 		return nil, err
 	}
-	err = uc.ClientGateway.Save(client)
+
+	err = useCase.ClientGateway.Save(client)
 	if err != nil {
 		return nil, err
 	}
+
 	return &CreateClientOutputDTO{
 		ID:        client.ID,
 		Name:      client.Name,
