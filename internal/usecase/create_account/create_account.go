@@ -18,23 +18,26 @@ type CreateAccountUseCase struct {
 	ClientGateway  gateway.ClientGateway
 }
 
-func NewCreateAccountUseCase(a gateway.AccountGateway, c gateway.ClientGateway) *CreateAccountUseCase {
+func NewCreateAccountUseCase(accountGateway gateway.AccountGateway, clientGateway gateway.ClientGateway) *CreateAccountUseCase {
 	return &CreateAccountUseCase{
-		AccountGateway: a,
-		ClientGateway:  c,
+		AccountGateway: accountGateway,
+		ClientGateway:  clientGateway,
 	}
 }
 
-func (uc *CreateAccountUseCase) Execute(input CreateAccountInputDTO) (*CreateAccountOutputDTO, error) {
-	client, err := uc.ClientGateway.Get(input.ClientID)
+func (useCase *CreateAccountUseCase) Execute(input CreateAccountInputDTO) (*CreateAccountOutputDTO, error) {
+	client, err := useCase.ClientGateway.Get(input.ClientID)
 	if err != nil {
 		return nil, err
 	}
+
 	account := entity.NewAccount(client)
-	err = uc.AccountGateway.Save(account)
+	err = useCase.AccountGateway.Save(account)
+
 	if err != nil {
 		return nil, err
 	}
+
 	return &CreateAccountOutputDTO{
 		ID: account.ID,
 	}, nil
