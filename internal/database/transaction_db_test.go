@@ -2,7 +2,7 @@ package database
 
 import (
 	"database/sql"
-	"github/silva4dev/golang-ms-wallet-project/internal/entity"
+	"github/silva4dev/golang-clean-api-project/internal/entity"
 	"testing"
 
 	"github.com/stretchr/testify/suite"

@@ -1,7 +1,7 @@
 package createclient
 
 import (
-	"github/silva4dev/golang-ms-wallet-project/internal/gateway/mocks"
+	"github/silva4dev/golang-clean-api-project/internal/gateway/mocks"
 	"testing"
 
 	"github.com/stretchr/testify/assert"

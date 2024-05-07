@@ -1,4 +1,4 @@
-module github/silva4dev/golang-ms-wallet-project
+module github/silva4dev/golang-clean-api-project
 
 go 1.18
 

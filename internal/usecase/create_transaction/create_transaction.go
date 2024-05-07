@@ -1,8 +1,8 @@
 package createtransaction
 
 import (
-	"github/silva4dev/golang-ms-wallet-project/internal/entity"
-	"github/silva4dev/golang-ms-wallet-project/internal/gateway"
+	"github/silva4dev/golang-clean-api-project/internal/entity"
+	"github/silva4dev/golang-clean-api-project/internal/gateway"
 )
 
 type CreateTransactionInputDTO struct {
