@@ -25,14 +25,14 @@ func NewCreateAccountUseCase(accountGateway gateway.AccountGateway, clientGatewa
 	}
 }
 
-func (useCase *CreateAccountUseCase) Execute(input CreateAccountInputDTO) (*CreateAccountOutputDTO, error) {
-	client, err := useCase.ClientGateway.Get(input.ClientID)
+func (uc *CreateAccountUseCase) Execute(input CreateAccountInputDTO) (*CreateAccountOutputDTO, error) {
+	client, err := uc.ClientGateway.Get(input.ClientID)
 	if err != nil {
 		return nil, err
 	}
 
 	account := entity.NewAccount(client)
-	err = useCase.AccountGateway.Save(account)
+	err = uc.AccountGateway.Save(account)
 
 	if err != nil {
 		return nil, err
